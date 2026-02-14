@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For Diya ❤️</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: #ffdde1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10;
+    text-align: center;
+  }
+
+  .openBtn {
+    background: #ff4d6d;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    transition: transform .2s;
+  }
+
+  .openBtn:hover { transform: scale(1.1); }
+
+  .card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    max-width: 400px;
+    position: relative;
+    display: none;
+  }
+
+  img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  }
+
+  h1 { color: #ff4d6d; }
+
+  #typing { font-size: 20px; color: #444; min-height: 28px; }
+
+  .heart { position: absolute; color: #ff4d6d; animation: float 6s linear infinite; }
+
+  @keyframes float {
+    from { transform: translateY(0) scale(1); opacity: 1; }
+    to { transform: translateY(-100vh) scale(1.8); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="overlay" id="overlay">
+  <h2>A small surprise for you 💌</h2>
+  <p id="count">Opening in 5...</p>
+  <button class="openBtn" onclick="startLove()">Tap to open ❤️</button>
+</div>
+
+<div class="card" id="card">
+  <img src="photo.jpg" alt="Us Together">
+  <h1>I Love You Diya ❤️</h1>
+  <div id="typing"></div>
+</div>
+
+<audio id="music" src="music.mp3" loop></audio>
+
+<script>
+let seconds = 5;
+const counter = document.getElementById('count');
+setInterval(()=>{
+  seconds--;
+  if(seconds>0) counter.innerText = 'Opening in ' + seconds + '...';
+},1000);
+
+function startLove(){
+  document.getElementById('overlay').style.display='none';
+  document.getElementById('card').style.display='block';
+  document.getElementById('music').play();
+  typeEffect();
+  hearts();
+}
+
+const message = "No matter the distance, you are always in my heart. You are my happiness, my peace, and my forever. 💕";
+let i=0;
+function typeEffect(){
+  if(i<message.length){
+    document.getElementById('typing').innerHTML+=message.charAt(i);
+    i++;
+    setTimeout(typeEffect,50);
+  }
+}
+
+function hearts(){
+  setInterval(()=>{
+    const heart=document.createElement('div');
+    heart.className='heart';
+    heart.innerHTML='❤';
+    heart.style.left=Math.random()*100+'vw';
+    heart.style.fontSize=(Math.random()*20+15)+'px';
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+  },300);
+}
+</script>
+
+</body>
+</html>
