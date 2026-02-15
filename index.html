@@ -28,7 +28,7 @@ canvas{position:fixed;inset:0;pointer-events:none}
 
 <div id="question" class="center">
 <h1>Will you be my Valentine? 💌</h1>
-<div style="position:relative;width:300px;height:150px">
+<div style="position:relative;width:320px;height:180px">
 <button id="yes" onclick="accepted()">Yes ❤️</button>
 <button id="no">No 😝</button>
 </div>
@@ -60,6 +60,7 @@ function moveNo(){
  tease.innerText=lines[Math.floor(Math.random()*lines.length)];
 }
 no.addEventListener('mouseover',moveNo);
+no.addEventListener('touchstart',e=>{e.preventDefault();moveNo();});
 no.addEventListener('click',e=>{e.preventDefault();moveNo();});
 
 function accepted(){
@@ -84,7 +85,7 @@ function confettiBurst(){for(let i=0;i<160;i++){pieces.push({x:innerWidth/2,y:in
 function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);pieces.forEach(p=>{p.x+=p.dx;p.y+=p.dy;p.dy+=0.05;ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,p.r,p.r)});if(pieces.length)requestAnimationFrame(animate)}
 
 // cursor hearts trail
-addEventListener('mousemove',e=>{const h=document.createElement('div');h.innerHTML='❤';h.style.position='absolute';h.style.left=e.pageX+'px';h.style.top=e.pageY+'px';h.style.fontSize='14px';h.style.opacity=.7;document.body.appendChild(h);setTimeout(()=>h.remove(),600)});
+h.innerHTML='❤';h.style.position='absolute';h.style.left=e.pageX+'px';h.style.top=e.pageY+'px';h.style.fontSize='14px';h.style.opacity=.7;document.body.appendChild(h);setTimeout(()=>h.remove(),600)});
 </script>
 
 </body>
