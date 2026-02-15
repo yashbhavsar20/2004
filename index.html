@@ -10,11 +10,11 @@ body{margin:0;font-family:'Segoe UI',sans-serif;height:100vh;background:linear-g
 .hidden{display:none}
 button{padding:14px 28px;font-size:18px;border:none;border-radius:30px;cursor:pointer;margin:10px;transition:.2s}
 #yes{background:#ff4d6d;color:white;position:relative;z-index:2}
-#no{background:#eee;position:absolute;z-index:1;pointer-events:none}
+#no{background:#eee;position:absolute;z-index:1}
 .card{background:white;padding:30px;border-radius:22px;box-shadow:0 15px 40px rgba(0,0,0,.25);max-width:420px;text-align:center;animation:pop .5s}
 img{width:240px;height:240px;object-fit:cover;border-radius:20px;margin:15px 0;box-shadow:0 10px 25px rgba(0,0,0,.25)}
 h1{color:#ff4d6d}
-#typing{font-size:20px;min-height:28px}
+#typing{font-size:18px;line-height:1.5;max-height:220px;overflow-y:auto;padding-right:6px}
 .heart{position:absolute;color:#ff4d6d;animation:float 6s linear infinite}
 @keyframes float{from{transform:translateY(0)}to{transform:translateY(-100vh);opacity:0}}
 @keyframes shake{0%{transform:translateX(0)}25%{transform:translateX(-8px)}50%{transform:translateX(8px)}75%{transform:translateX(-6px)}100%{transform:translateX(0)}}
@@ -30,7 +30,7 @@ canvas{position:fixed;inset:0;pointer-events:none}
 <h1>Will you be my Valentine? 💌</h1>
 <div style="position:relative;width:320px;height:180px">
 <button id="yes">Yes ❤️</button>
-<button id="no">No 😝</button>
+<button id="no">No</button>
 </div>
 <p id="tease"></p>
 </div>
@@ -38,7 +38,7 @@ canvas{position:fixed;inset:0;pointer-events:none}
 <div id="love" class="center hidden">
 <div class="card">
 <h1>I Love You Diya ❤️</h1>
-<img src="photo.jpeg">
+<img src="photo.jpg">
 <div id="typing"></div>
 </div>
 </div>
@@ -47,7 +47,10 @@ canvas{position:fixed;inset:0;pointer-events:none}
 
 <script>
 // moving NO button + teasing text
-// 'No' button now does nothing by design
+// No button shows guidance message
+const noBtn=document.getElementById('no');
+noBtn.addEventListener('click',()=>{document.getElementById('tease').innerText='Please select Yes to proceed';});
+noBtn.addEventListener('touchend',e=>{e.preventDefault();document.getElementById('tease').innerText='Please select Yes to proceed';});
 const yesBtn=document.getElementById('yes');
 yesBtn.addEventListener('click',accepted);
 yesBtn.addEventListener('touchend',e=>{e.preventDefault();accepted();});
