@@ -47,21 +47,7 @@ canvas{position:fixed;inset:0;pointer-events:none}
 
 <script>
 // moving NO button + teasing text
-const no=document.getElementById('no');
-const tease=document.getElementById('tease');
-const lines=["Nice try 😜","You can't escape love 💘","Wrong button 👀","Destiny says YES ❤️","Hehe try again"];
-function moveNo(){
- const x=Math.random()*250;
- const y=Math.random()*120;
- no.style.left=x+'px';
- no.style.top=y+'px';
- document.body.style.animation='shake .3s';
- setTimeout(()=>document.body.style.animation='',300);
- tease.innerText=lines[Math.floor(Math.random()*lines.length)];
-}
-no.addEventListener('mouseover',moveNo);
-no.addEventListener('touchstart',e=>{e.preventDefault();moveNo();});
-no.addEventListener('click',e=>{e.preventDefault();moveNo();});
+// 'No' button now does nothing by design
 const yesBtn=document.getElementById('yes');
 yesBtn.addEventListener('click',accepted);
 yesBtn.addEventListener('touchend',e=>{e.preventDefault();accepted();});
