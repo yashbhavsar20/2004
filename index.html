@@ -58,15 +58,14 @@ function accepted(){
  const music=document.getElementById('music');
  music.currentTime=22;
  music.play().catch(()=>{});
- type(); hearts(); confettiBurst();
+ type(); confettiBurst();
 }
 
 // typing message
 const msg="I don’t know how you did it, but you slowly became my favorite part of every day.<br><br>Even when we are far, you are the closest person to my heart.<br><br>Talking to you feels like home, and missing you feels like something is incomplete inside me.<br><br>I don’t want a perfect life… I just want a life where you are always there with me.<br><br>If I ever have to choose again in every lifetime, I will still choose you without thinking.<br><br>I love you more than I can ever properly say ❤️";
 let i=0;function type(){if(i<msg.length){i++;typing.innerHTML=msg.slice(0,i);setTimeout(type,45)}}
 
-// hearts floating
-function hearts(){setInterval(()=>{const h=document.createElement('div');h.className='heart';h.innerHTML='❤';h.style.left=Math.random()*100+'vw';h.style.fontSize=(Math.random()*20+15)+'px';document.body.appendChild(h);setTimeout(()=>h.remove(),6000)},300)}
+
 
 // confetti explosion
 const canvas=document.getElementById('confetti');const ctx=canvas.getContext('2d');canvas.width=innerWidth;canvas.height=innerHeight;let pieces=[];
