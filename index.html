@@ -38,7 +38,7 @@ canvas{position:fixed;inset:0;pointer-events:none}
 <div id="love" class="center hidden">
 <div class="card">
 <h1>I Love You Diya ❤️</h1>
-<img src="photo.jpeg">
+<img src="photo.jpg">
 <div id="typing"></div>
 </div>
 </div>
@@ -65,7 +65,9 @@ no.addEventListener('click',e=>{e.preventDefault();moveNo();});
 function accepted(){
  document.getElementById('question').classList.add('hidden');
  document.getElementById('love').classList.remove('hidden');
- const music=document.getElementById('music'); music.currentTime=22; music.play(); music.onended=()=>{music.currentTime=22;music.play();};
+ const music=document.getElementById('music');
+ music.currentTime=22;
+ music.play().catch(()=>{});
  type(); hearts(); confettiBurst();
 }
 
